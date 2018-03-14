@@ -5,7 +5,7 @@ var myapp = angular.module('angularkart', [
     'angularkart.product'
 ]);
 
-myapp.config(['$stateProvider', function($stateProvider){
+myapp.config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider){
     $stateProvider.state({
         name: 'home',
         url: '/',
@@ -18,10 +18,29 @@ myapp.config(['$stateProvider', function($stateProvider){
     });
 
     $stateProvider.state({
-        name: 'productDetails',
-        url: '/product/{productId}',
-        component: 'productDetail'
+        name: 'cart',
+        url: '/cart',
+        component: 'cart',
+        resolve: {
+            cartItems: ['CartService', function(CartService){
+                return CartService.getAllCartItems();
+            }]
+        }
     });
 
+    $stateProvider.state({
+        name: 'productDetails',
+        url: '/product/{productId}',
+        component: 'productDetail',
+        resolve: {
+            product: ['$transition$', 'ProductService', 
+                function($transition$, ProductService){
+                    var prodId = $transition$.params().productId;
+                    return ProductService.getProductById(prodId);
+                }]
+        }
+    });
+
+    $urlRouterProvider.otherwise('/');
 
 }]);
