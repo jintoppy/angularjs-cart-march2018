@@ -10,5 +10,14 @@ angular.module('angularkart.product')
 
         };
 
-        
+        this.getProductById = function(prodId){
+            return this.getProducts()
+                    .then(function(products){
+                        return products.find(function(p){
+                            return p.id == prodId;
+                        });
+                    });
+        };
+
+
     }]);

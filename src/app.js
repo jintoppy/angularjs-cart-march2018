@@ -9,7 +9,12 @@ myapp.config(['$stateProvider', function($stateProvider){
     $stateProvider.state({
         name: 'home',
         url: '/',
-        component: 'productList'
+        component: 'productList',
+        resolve: {
+            products: ['ProductService', function(ProductService){
+                return ProductService.getProducts()
+            }]
+        }
     });
 
     $stateProvider.state({

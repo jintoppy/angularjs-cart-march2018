@@ -1,1 +1,21 @@
-<h2>Product list</h2>
+<h2>Products</h2>
+
+<div class="row">
+    <div ng-repeat="prod in $ctrl.products" class="col-md-6 col-xs-6 col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{prod.title}}
+            </div>
+            <div class="panel-body">
+                <div>
+                        <img height="100" width="100" ng-src="{{prod.imgUrl}}" alt="">
+                </div>
+                <p>
+                    Price: {{prod.price | currency}}
+                </p>
+                <a ui-sref="productDetails({productId: prod.id})" class="btn btn-success">View Detail</a>
+            </div>
+        </div>            
+    </div>
+    
+</div>
