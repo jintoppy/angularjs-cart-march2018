@@ -15,15 +15,21 @@
             <div class="col-md-3 col-sm-3 col-xs-3">
                 <h4>Angular Cart</h4>
             </div>
-            <div class="col-md-7 col-sm-7 col-xs-7">
+            <div class="col-md-9 col-sm-9 col-xs-9">
                     <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">Home</a></li>
-                        <li role="presentation"><a href="#">Cart</a></li>
+                        <li role="presentation" class="active">
+                            <a ui-sref="home">Home</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#">Cart</a>
+                        </li>
                     </ul>
             </div>            
         </div>
         <div class="row content-area">
-
+            <div class="col-md-12">
+                <ui-view></ui-view>
+            </div>
         </div>
         <div class="row footer"></div>
     </div>
@@ -34,6 +40,9 @@
     <script src="src/product/product.module.js"></script>
     <script src="src/cart/cart.module.js"></script>
     <script src="src/app.js"></script>
-    
+    <script src="src/product/product.service.js"></script>
+    <script src="src/product/components/productlist.component.js"></script>
+    <script src="src/product/components/productdetail.component.js"></script>
+
 </body>
 </html>
